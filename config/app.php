@@ -81,7 +81,7 @@ return [
     */
 
     'locale' => 'ja',
-
+    'fallback_locale' => 'ja',
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
