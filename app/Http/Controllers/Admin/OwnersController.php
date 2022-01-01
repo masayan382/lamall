@@ -4,19 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Owner;
-use Illuminate\Support\Facades\DB;
+use App\Models\Owner; // Eloquent エロクアント
+use Illuminate\Support\Facades\DB; // QueryBuilder クエリビルダ
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class OwnersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -40,14 +34,14 @@ class OwnersController extends Controller
         // var_dump($q_first);
 
         // dd($e_all, $q_get, $q_first, $c_test);
-        $owners = Owner::select('id', 'name', 'email', 'created_at')->get();
+        $owners = Owner::select('id', 'name', 'email', 'created_at')
+            ->paginate(3);
 
         return view(
             'admin.owners.index',
             compact('owners')
         );
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -67,6 +61,7 @@ class OwnersController extends Controller
      */
     public function store(Request $request)
     {
+        //$request->name;
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:owners',
@@ -81,7 +76,10 @@ class OwnersController extends Controller
 
         return redirect()
             ->route('admin.owners.index')
-            ->with(['message' => 'オーナー登録を実施しました。', 'status' => 'info']);
+            ->with([
+                'message' => 'オーナー登録を実施しました。',
+                'status' => 'info'
+            ]);
     }
 
     /**
@@ -123,7 +121,12 @@ class OwnersController extends Controller
         $owner->password = Hash::make($request->password);
         $owner->save();
 
-        return redirect()->route('admin.owners.index')->with(['message' => 'オーナー情報を更新しました。', 'status' => 'info']);
+        return redirect()
+            ->route('admin.owners.index')
+            ->with([
+                'message' => 'オーナー情報を更新しました。',
+                'status' => 'info'
+            ]);
     }
 
     /**
@@ -134,21 +137,22 @@ class OwnersController extends Controller
      */
     public function destroy($id)
     {
-        Owner::findOrFail($id)->delete();
-        return redirect()->route('admin.owners.index')->with([
-            'message' => 'オーナー情報を削除しました。',
-            'status' => 'alert'
-        ]);
+        Owner::findOrFail($id)->delete(); //ソフトデリート
+
+        return redirect()
+            ->route('admin.owners.index')
+            ->with([
+                'message' => 'オーナー情報を削除しました。',
+                'status' => 'alert'
+            ]);
     }
 
     public function expiredOwnerIndex()
     {
         $expiredOwners = Owner::onlyTrashed()->get();
-        return view(
-            'admin.expired-owners',
-            compact('expiredOwners')
-        );
+        return view('admin.expired-owners', compact('expiredOwners'));
     }
+
     public function expiredOwnerDestroy($id)
     {
         Owner::onlyTrashed()->findOrFail($id)->forceDelete();
