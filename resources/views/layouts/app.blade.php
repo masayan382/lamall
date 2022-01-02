@@ -22,10 +22,10 @@
     <div class="min-h-screen bg-gray-100">
         @if (auth('admin')->user())
             @include('layouts.admin-navigation')
-        @elseif(auth('owner')->user())
+        @elseif(auth('owners')->user())
             @include('layouts.owner-navigation')
         @elseif(auth('users')->user())
-            @include('layout.user-navigation')
+            @include('layouts.user-navigation')
         @endif
 
         <!-- Page Heading -->
