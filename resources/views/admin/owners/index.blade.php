@@ -36,7 +36,6 @@
                                             <th
                                                 class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br">
                                             </th>
-                                        </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($owners as $owner)
@@ -48,7 +47,7 @@
                                                 <td class="md:px-4 py-3">
                                                     <button
                                                         onclick="location.href='{{ route('admin.owners.edit', ['owner' => $owner->id]) }}'"
-                                                        class="text-white bg-indigo-400 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-500 rounded text-lg">編集</button>
+                                                        class="text-white bg-indigo-400 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-500 rounded ">編集</button>
                                                 </td>
                                                 <form id="delete_{{ $owner->id }}" method="post"
                                                     action="{{ route('admin.owners.destroy', ['owner' => $owner->id]) }}">
@@ -68,22 +67,22 @@
                             </div>
                         </div>
                     </section>
+
                     {{-- エロクアント
-                    @foreach ($e_all as $e_owner)
-                        {{ $e_owner->name }}
-                        {{ $e_owner->created_at }}
-                    @endforeach
-                    <br>
-                    クエリビルダ
-                    @foreach ($q_get as $q_owner)
-                        {{ $q_owner->name }}
-                        {{ $q_owner->created_at }}
-                    @endforeach --}}
+                @foreach ($e_all as $e_owner)
+                  {{ $e_owner->name }}
+                  {{ $e_owner->created_at->diffForHumans() }}
+                @endforeach
+                <br>
+                クエリビルダ
+                @foreach ($q_get as $q_owner)
+                  {{ $q_owner->name }}
+                  {{ Carbon\Carbon::parse($q_owner->created_at)->diffForHumans() }}
+                @endforeach --}}
                 </div>
             </div>
         </div>
     </div>
-
     <script>
         function deletePost(e) {
             'use strict';
