@@ -20,13 +20,7 @@
                                             <span class="border p-2 rounded-md bg-red-400 text-white">停止中</span>
                                         @endif
                                         <div class="text-xl">{{ $shop->name }}</div>
-                                        <div>
-                                            @if (empty($shop->filename))
-                                                <img src="{{ asset('images/no_image.jpeg') }}" alt="">
-                                            @else
-                                                <img src="{{ asset('storage/shops' . $shop->filename) }}" alt="">
-                                            @endif
-                                        </div>
+                                        <x-shop-thumbnail />
                                     </div>
                                 </div>
                             </a>
