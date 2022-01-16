@@ -28,10 +28,10 @@
 
                                 </div>
                             </div>
-                            {{-- <x-select-image :images="$images" name="image1" />
+                            <x-select-image :images="$images" name="image1" />
                             <x-select-image :images="$images" name="image2" />
                             <x-select-image :images="$images" name="image3" />
-                            <x-select-image :images="$images" name="image4" /> --}}
+                            <x-select-image :images="$images" name="image4" />
 
                             <div class="p-2 w-full flex justify-around mt-4">
                                 <button type="button" onclick="location.href='{{ route('owner.products.index') }}'"
