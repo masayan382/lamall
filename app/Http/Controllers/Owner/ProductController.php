@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Image;
 use App\Models\Product;
-use App\Models\SecondaryCategory;
+use App\Models\Shop;
+use App\Models\PrimaryCategory;
 use App\Models\Owner;
 
 class ProductController extends Controller
@@ -18,11 +19,11 @@ class ProductController extends Controller
 
         $this->middleware(function ($request, $next) {
 
-            $id = $request->route()->parameter('product');
-            if (!is_null($id)) {
-                $productsOwnerId = Product::findOrFail($id)->shop->owner->id;
-                $productId = (int)$productsOwnerId;
-                if ($productId !== Auth::id()) {
+            $id = $request->route()->parameter('product'); 
+            if(!is_null($id)){ 
+            $productsOwnerId = Product::findOrFail($id)->shop->owner->id;
+                $productId = (int)$productsOwnerId; 
+                if($productId !== Auth::id()){ 
                     abort(404);
                 }
             }
@@ -32,10 +33,11 @@ class ProductController extends Controller
 
     public function index()
     {
+        // EagerLoadingなし
         //$products = Owner::findOrFail(Auth::id())->shop->product;
-
+        
         $ownerInfo = Owner::with('shop.product.imageFirst')
-            ->where('id', Auth::id())->get();
+        ->where('id', Auth::id())->get();
 
         // dd($ownerInfo);
         // foreach($ownerInfo as $owner){
@@ -45,10 +47,8 @@ class ProductController extends Controller
         //     }
         // }
 
-        return view(
-            'owner.products.index',
-            compact('ownerInfo')
-        );
+        return view('owner.products.index',
+        compact('ownerInfo'));
     }
 
     /**
@@ -58,7 +58,18 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $shops = Shop::where('id', Auth::id())
+        ->select('id', 'name')
+        ->get();
+
+        $images = Image::where('id', Auth::id())
+        ->select('id', 'title', 'filename')
+        ->get();
+
+        $categories = PrimaryCategory::all();
+
+        return view('owner.products.create', 
+            compact('shops', 'images', 'categories'));
     }
 
     /**
