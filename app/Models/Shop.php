@@ -16,11 +16,16 @@ class Shop extends Model
         'name',
         'information',
         'filename',
-        'is_selling',
+        'is_selling'
     ];
 
     public function owner()
     {
         return $this->belongsTo(Owner::class);
+    }
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
     }
 }
