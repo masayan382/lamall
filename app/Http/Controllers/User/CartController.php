@@ -8,6 +8,7 @@ use App\Models\Cart;
 use App\Models\User;
 use App\Models\Stock;
 use Illuminate\Support\Facades\Auth;
+use App\Services\CartService;
 
 class CartController extends Controller
 {
@@ -58,6 +59,11 @@ class CartController extends Controller
 
     public function checkout()
     {
+        ////
+        $items = Cart::where('user_id', Auth::id())->get();
+        $products = CartService::getItemsInCart($items);
+        ////
+
         $user = User::findOrFail(Auth::id());
         $products = $user->products;
         
@@ -67,7 +73,7 @@ class CartController extends Controller
             $quantity = Stock::where('product_id', $product->id)->sum('quantity');
 
             if($product->pivot->quantity > $quantity){
-                return view('user.cart.index');
+                return redirect()->route('user.cart.index');
             } else {
                 $lineItem = [
                     'name' => $product->name,
