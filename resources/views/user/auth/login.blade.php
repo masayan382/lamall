@@ -1,5 +1,4 @@
 <x-guest-layout>
-    <script src="{{ url('js/user.js') }}" defer></script>
     <x-auth-card>
         ユーザー用
         <x-slot name="logo">
@@ -45,10 +44,10 @@
 
             <!-- Gest Mode -->
             <div class="block mt-4">
-                <label for="gest_mode" class="inline-flex items-center">
-                    <input id="gest_mode" type="checkbox"
+                <label for="user" class="inline-flex items-center">
+                    <input id="user" type="checkbox"
                         class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                        name="gest_mode">
+                        name="user" onClick="testUser(this.id);">
                     <span class="ml-2 text-sm text-gray-600">{{ __('テストアカウントでログインする') }}</span>
                 </label>
             </div>
