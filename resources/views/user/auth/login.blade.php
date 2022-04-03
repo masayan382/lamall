@@ -2,13 +2,15 @@
     <x-auth-card>
         ユーザー用
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            <div class="w-64">
+                <a href="/">
+                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                </a>
+            </div>
         </x-slot>
 
         <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        <x-auth-session-status class=" mb-4" :status="session('status')" />
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
@@ -63,6 +65,11 @@
                 <x-button class="ml-3">
                     {{ __('Log in') }}
                 </x-button>
+            </div>
+            <div
+                class="mt-6 flex justify-around text-xs text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                <a href="{{ url('owner/login') }}">オーナーのログインページへ</a>
+                <a href="{{ url('admin/login') }}">管理者のログインページへ</a>
             </div>
         </form>
     </x-auth-card>
