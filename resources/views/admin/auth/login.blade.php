@@ -1,8 +1,8 @@
 <x-guest-layout>
     <x-auth-card>
-        管理者用
+        <div class="my-6 text-2xl font-bold text-center text-gray-600">管理者用</div>
         <x-slot name="logo">
-            <div class="w-28">
+            <div class="w-64">
                 <a href="/">
                     <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
                 </a>
@@ -65,6 +65,11 @@
                 <x-button class="ml-3">
                     {{ __('Log in') }}
                 </x-button>
+            </div>
+            <div
+                class="mt-6 flex justify-around text-xs text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                <a href="{{ url('login') }}">ユーザーのログインページへ</a>
+                <a href="{{ url('owner/login') }}">オーナーのログインページへ</a>
             </div>
         </form>
     </x-auth-card>
