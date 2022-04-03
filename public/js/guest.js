@@ -14,3 +14,16 @@ const testUser = (name) => {
     }
     password.value = "password123";
 };
+
+(() => {
+    const target = document.getElementById("login_card");
+    console.log(target);
+    const url = location.href;
+    console.log(url);
+    if (url.indexOf("admin") >= 0) {
+        target.classList.add("bg-red-100");
+    }
+    if (url.indexOf("owner") >= 0) {
+        target.classList.add("bg-blue-100");
+    }
+})();

@@ -1,6 +1,6 @@
 <x-guest-layout>
     <x-auth-card>
-        管理者用
+        <div class="my-6 text-2xl font-bold text-center text-gray-600">管理者用</div>
         <x-slot name="logo">
             <div class="w-64">
                 <a href="/">
