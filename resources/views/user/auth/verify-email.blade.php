@@ -1,9 +1,11 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            <div class="w-64">
+                <a href="/">
+                    <x-application-logo class="h-20 w-20 fill-current text-gray-500" />
+                </a>
+            </div>
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
@@ -11,7 +13,7 @@
         </div>
 
         @if (session('status') == 'verification-link-sent')
-            <div class="mb-4 font-medium text-sm text-green-600">
+            <div class="mb-4 text-sm font-medium text-green-600">
                 {{ __('A new verification link has been sent to the email address you provided during registration.') }}
             </div>
         @endif
@@ -30,7 +32,7 @@
             <form method="POST" action="{{ route('user.logout') }}">
                 @csrf
 
-                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <button type="submit" class="text-sm text-gray-600 underline hover:text-gray-900">
                     {{ __('Log out') }}
                 </button>
             </form>
