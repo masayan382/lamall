@@ -1,5 +1,4 @@
 const testUser = (name) => {
-    console.log("test");
     let email = document.getElementById("email");
     let password = document.getElementById("password");
     let visitor = name;
@@ -17,9 +16,7 @@ const testUser = (name) => {
 
 (() => {
     const target = document.getElementById("login_card");
-    console.log(target);
     const url = location.href;
-    console.log(url);
     if (url.indexOf("admin") >= 0) {
         target.classList.add("bg-red-100");
     }
