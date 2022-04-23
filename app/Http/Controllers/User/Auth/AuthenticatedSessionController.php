@@ -46,12 +46,11 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::guard('users')->logout();
 
-        $request->session()->flush();
-
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
+        $request->session()->flush();
         return redirect('/login');
     }
 }
