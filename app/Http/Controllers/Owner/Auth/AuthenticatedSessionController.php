@@ -17,7 +17,6 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        $request->session()->flush();
 
         return view('owner.auth.login');
     }
