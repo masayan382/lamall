@@ -10,8 +10,8 @@ if ($type === 'products') {
 
 <div class="flex justify-center">
     @if (empty($filename))
-        <img src="{{ asset('images/no_image.jpg') }}">
+        <img src="{{ url('images/no_image.jpg') }}">
     @else
-        <img src="{{ asset($path . $filename) }}">
+        <img src="{{ url($path . $filename) }}">
     @endif
 </div>
