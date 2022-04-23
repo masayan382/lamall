@@ -19,7 +19,7 @@
                                     <div class="swiper-slide">
                                         @if ($product->imageFirst->filename !== null)
                                             <img
-                                                src="{{ asset('storage/products/' . $product->imageFirst->filename) }}">
+                                                src="{{ url('storage/products/' . $product->imageFirst->filename) }}">
                                         @else
                                             <img src="">
                                         @endif
@@ -27,7 +27,7 @@
                                     <div class="swiper-slide">
                                         @if ($product->imageSecond->filename !== null)
                                             <img
-                                                src="{{ asset('storage/products/' . $product->imageSecond->filename) }}">
+                                                src="{{ url('storage/products/' . $product->imageSecond->filename) }}">
                                         @else
                                             <img src="">
                                         @endif
@@ -35,7 +35,7 @@
                                     <div class="swiper-slide">
                                         @if ($product->imageThird->filename !== null)
                                             <img
-                                                src="{{ asset('storage/products/' . $product->imageThird->filename) }}">
+                                                src="{{ url('storage/products/' . $product->imageThird->filename) }}">
                                         @else
                                             <img src="">
                                         @endif
@@ -43,7 +43,7 @@
                                     <div class="swiper-slide">
                                         @if ($product->imageFourth->filename !== null)
                                             <img
-                                                src="{{ asset('storage/products/' . $product->imageFourth->filename) }}">
+                                                src="{{ url('storage/products/' . $product->imageFourth->filename) }}">
                                         @else
                                             <img src="">
                                         @endif
