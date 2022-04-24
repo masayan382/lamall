@@ -1,4 +1,12 @@
 .swiper-container {
   /* width: 600px; */
   height: 300px;
+  text-align: center;
 }
+.swiper-container img{
+  max-height: 300px;
+  margin:0 auto;
+  text-align: center;
+}
+.bg-red-100{background-color: #fff5f5;}
+.bg-blue-100{background-color: #ebf8ff;}

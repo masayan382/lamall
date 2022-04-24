@@ -16,52 +16,50 @@ class CategorySeeder extends Seeder
     {
         DB::table('primary_categories')->insert([
             [
-                'name' => 'キッズファッション',
+                'name' => 'パソコン',
                 'sort_order' => 1,
             ],
             [
-                'name' => '出産祝い・ギフト',
+                'name' => 'タブレット',
                 'sort_order' => 2,
             ],
             [
-                'name' => 'ベビーカー',
+                'name' => 'スマホ',
                 'sort_order' => 3,
             ],
-            ]);
+        ]);
 
         DB::table('secondary_categories')->insert([
             [
-                'name' => '靴',
+                'name' => 'windows',
                 'sort_order' => 1,
                 'primary_category_id' => 1
             ],
             [
-                'name' => 'トップス',
+                'name' => 'MAC',
                 'sort_order' => 2,
                 'primary_category_id' => 1
             ],
             [
-                'name' => 'バッグ・ランドセル',
+                'name' => 'Chromebook',
                 'sort_order' => 3,
                 'primary_category_id' => 1
             ],
             [
-                'name' => 'ギフトセット',
+                'name' => 'ipad',
                 'sort_order' => 4,
                 'primary_category_id' => 2
             ],
             [
-                'name' => 'メモリアル・記念品',
+                'name' => 'iphone',
                 'sort_order' => 5,
                 'primary_category_id' => 2
             ],
             [
-                'name' => 'おむつケーキ',
+                'name' => 'Android',
                 'sort_order' => 6,
                 'primary_category_id' => 2
             ],
-            ]);
-
-    
-        }
+        ]);
+    }
 }

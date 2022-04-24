@@ -17,6 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
+
         return view('owner.auth.login');
     }
 
@@ -44,6 +45,8 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request)
     {
         Auth::guard('owners')->logout();
+
+        $request->session()->flush();
 
         $request->session()->invalidate();
 
