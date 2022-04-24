@@ -59,7 +59,7 @@ class ItemController extends Controller
         if ($quantity > 9) {
             $quantity = 9;
         }
-
+        
         return view('user.show',
             compact('product', 'quantity'));
     }

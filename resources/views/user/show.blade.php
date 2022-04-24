@@ -25,7 +25,7 @@
                                         @endif
                                     </div>
                                     <div class="swiper-slide">
-                                        @if ($product->imageSecond->filename !== null)
+                                        @if ($product->imageSecond !== null)
                                             <img
                                                 src="{{ url('storage/products/' . $product->imageSecond->filename) }}">
                                         @else
@@ -33,7 +33,7 @@
                                         @endif
                                     </div>
                                     <div class="swiper-slide">
-                                        @if ($product->imageThird->filename !== null)
+                                        @if ($product->imageThird !== null)
                                             <img
                                                 src="{{ url('storage/products/' . $product->imageThird->filename) }}">
                                         @else
@@ -41,7 +41,7 @@
                                         @endif
                                     </div>
                                     <div class="swiper-slide">
-                                        @if ($product->imageFourth->filename !== null)
+                                        @if ($product->imageFourth !== null)
                                             <img
                                                 src="{{ url('storage/products/' . $product->imageFourth->filename) }}">
                                         @else
@@ -135,6 +135,5 @@
         </div>
     </div>
 
-    {{-- <script src="{{ mix('js/swiper.js')}}"></script> --}}
-    <script src="{{ url('js/swiper.js') }}"></script>
+    <script src="{{ mix('js/swiper.js') }}"></script>
 </x-app-layout>
